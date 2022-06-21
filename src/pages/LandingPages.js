@@ -7,7 +7,7 @@ export default class LandingPages extends Component {
   render() {
     return (
       <View>
-        <Text>LandingPageyos</Text>
+        <Text>LandingPages</Text>
       </View>
     );
   }
