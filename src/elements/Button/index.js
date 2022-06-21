@@ -14,6 +14,7 @@ function Button(props) {
     if (props.onClick) props.onClick();
   };
 
+  // if disabled/loading
   if (props.isDisabled || props.isLoading) {
     if (props.isDisabled) className.push("disabled");
     return (
@@ -30,26 +31,31 @@ function Button(props) {
     );
   }
 
+  // link
   if (props.type === "link") {
     if (props.isExternal) {
-      <a
-        href={props.href}
-        className={className.join(" ")}
-        style={props.style}
-        target={props.target === "_blank" ? "_blank" : undefined}
-        rel={props.target === "_blank" ? "noopener noreferrer" : undefined}
-      >
-        {props.children}
-      </a>;
+      return (
+        <a
+          href={props.href}
+          className={className.join(" ")}
+          style={props.style}
+          target={props.target === "_blank" ? "_blank" : undefined}
+          rel={props.target === "_blank" ? "noopener noreferrer" : undefined}
+        >
+          {props.children}
+        </a>
+      );
     } else {
-      <Link
-        to={props.href}
-        className={className.join(" ")}
-        style={props.style}
-        onClick={onClick}
-      >
-        {props.children}
-      </Link>;
+      return (
+        <Link
+          to={props.href}
+          className={className.join(" ")}
+          style={props.style}
+          onClick={onClick}
+        >
+          {props.children}
+        </Link>
+      );
     }
   }
 
@@ -72,6 +78,7 @@ Button.propTypes = {
   href: propTypes.string,
   target: propTypes.string,
   classNamge: propTypes.string,
+  isExternal: propTypes.bool,
   isDisabled: propTypes.bool,
   isLoading: propTypes.bool,
   isSmall: propTypes.bool,
